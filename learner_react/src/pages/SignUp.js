@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useState } from "react";
+import {useState} from "react";
 
 const SignUp = () => {
     const [form, setForm] = useState({
@@ -15,7 +15,7 @@ const SignUp = () => {
     const [errorMessage, setErrorMessage] = useState("");
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
+        const {name, value} = e.target;
         setForm({
             ...form,
             [name]: value,
@@ -177,6 +177,7 @@ const SubmitButton = styled.button`
     border-radius: 5px;
     font-size: 1.1rem;
     cursor: pointer;
+
     &:hover {
         background-color: #218838;
     }
@@ -185,6 +186,7 @@ const SubmitButton = styled.button`
 const SimpleSignUp = styled.div`
     margin-top: 2rem;
     text-align: center;
+
     span {
         margin-bottom: 1rem;
         display: block;
@@ -192,16 +194,16 @@ const SimpleSignUp = styled.div`
 `;
 
 const SocialButtons = styled.div`
-    display: flex;   // flex-direction을 row로 변경하여 가로 배치
+    display: flex; // flex-direction을 row로 변경하여 가로 배치
     justify-content: center;
     align-items: center;
-    gap: 2rem;  // 버튼 간 간격을 넓힘
+    gap: 2rem; // 버튼 간 간격을 넓힘
 `;
 
 const Icon = styled.img`
-    width: 100px;  // 더 큰 크기로 설정
+    width: 100px; // 더 큰 크기로 설정
     height: 100px; // 더 큰 크기로 설정
-    cursor: pointer;  // 클릭 가능한 손모양 커서 추가
+    cursor: pointer; // 클릭 가능한 손모양 커서 추가
     object-fit: contain;
 `;
 

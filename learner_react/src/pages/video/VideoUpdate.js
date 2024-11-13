@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import axios from "../axiosInstance";
-import { useParams, useNavigate } from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import styled from "styled-components";
 
 const Video_Url = "http://localhost:8080/video";
 
 const UpdateVideo = () => {
-    const { videoId } = useParams();
+    const {videoId} = useParams();
     const [video, setVideo] = useState(null);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
@@ -15,8 +15,8 @@ const UpdateVideo = () => {
         const fetchVideo = async () => {
             setLoading(true);
             try {
-                console.log("video id: ",videoId)
-                const response = await axios.get(`${Video_Url}/${videoId}`, { withCredentials: true });
+                console.log("video id: ", videoId)
+                const response = await axios.get(`${Video_Url}/${videoId}`, {withCredentials: true});
                 setVideo(response.data);
                 console.log(setVideo);
             } catch (error) {
@@ -32,7 +32,7 @@ const UpdateVideo = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.put(`${Video_Url}/${videoId}`, video,{ withCredentials: true });
+            await axios.put(`${Video_Url}/${videoId}`, video, {withCredentials: true});
             navigate(`/video/Instructor/${video.courseId}`); // 비디오 목록으로 이동
         } catch (error) {
             console.error("비디오 수정 중 오류 발생:", error);
@@ -48,23 +48,28 @@ const UpdateVideo = () => {
             <form onSubmit={handleSubmit}>
                 <Label>
                     제목:
-                    <Input type="text" value={video.title} onChange={(e) => setVideo({ ...video, title: e.target.value })} required />
+                    <Input type="text" value={video.title} onChange={(e) => setVideo({...video, title: e.target.value})}
+                           required/>
                 </Label>
                 <Label>
                     URL:
-                    <Input type="text" value={video.url} onChange={(e) => setVideo({ ...video, url: e.target.value })} required />
+                    <Input type="text" value={video.url} onChange={(e) => setVideo({...video, url: e.target.value})}
+                           required/>
                 </Label>
                 <Label>
                     설명:
-                    <Input type="text" value={video.description} onChange={(e) => setVideo({ ...video, description: e.target.value })} />
+                    <Input type="text" value={video.description}
+                           onChange={(e) => setVideo({...video, description: e.target.value})}/>
                 </Label>
                 <Label>
                     전체 동영상 시간:
-                    <Input type="number" value={video.totalVideoDuration} onChange={(e) => setVideo({ ...video, totalVideoDuration: e.target.value })} />
+                    <Input type="number" value={video.totalVideoDuration}
+                           onChange={(e) => setVideo({...video, totalVideoDuration: e.target.value})}/>
                 </Label>
                 <Label>
                     현재 동영상 시간:
-                    <Input type="number" value={video.currentVideoTime} onChange={(e) => setVideo({ ...video, currentVideoTime: e.target.value })} />
+                    <Input type="number" value={video.currentVideoTime}
+                           onChange={(e) => setVideo({...video, currentVideoTime: e.target.value})}/>
                 </Label>
                 <Button type="submit">수정</Button>
             </form>

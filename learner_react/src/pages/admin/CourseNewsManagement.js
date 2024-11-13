@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import axiosInstance from '../axiosInstance';
 import styled from "styled-components"; // axiosInstance import
 
 const CourseNewsManagement = (props) => {
-    const { courseId: propsCourseId } = props; // props에서 courseId 가져오기
-    const { courseId: paramCourseId } = useParams(); // URL 파라미터에서 courseId 가져오기
+    const {courseId: propsCourseId} = props; // props에서 courseId 가져오기
+    const {courseId: paramCourseId} = useParams(); // URL 파라미터에서 courseId 가져오기
 
     const courseId = propsCourseId || paramCourseId; // props가 있으면 props 값을, 없으면 URL 파라미터 값을 사용
 
@@ -279,6 +279,7 @@ const WriteButton = styled.button`
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
+
     &:hover {
         background-color: #2a9d63;
     }

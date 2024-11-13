@@ -1,10 +1,9 @@
 import styled from "styled-components";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { jwtDecode } from "jwt-decode";
-    import axiosInstance from "../pages/axiosInstance";
+import {Link, useLocation, useNavigate} from "react-router-dom";
+import {useEffect, useState} from "react";
+import axiosInstance from "../pages/axiosInstance";
 
-const Header = ({ openModal }) => {
+const Header = ({openModal}) => {
     const navigate = useNavigate();
     const location = useLocation();
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -19,7 +18,7 @@ const Header = ({ openModal }) => {
             setIsLoggedIn(true);
             try {
                 const response = await axiosInstance.get('/token/decode');
-                const { role } = response.data; // 응답에서 역할 가져오기
+                const {role} = response.data; // 응답에서 역할 가져오기
                 setRole(role);
             } catch (error) {
                 console.error("토큰 디코딩 요청 실패:", error);
@@ -41,7 +40,7 @@ const Header = ({ openModal }) => {
     const handleLogout = () => {
         try {
             // 서버에 로그아웃 요청 보내기 (쿠키 포함)
-            axiosInstance.post("/join/logout", null, { withCredentials: true })
+            axiosInstance.post("/join/logout", null, {withCredentials: true})
                 .then(() => {
                     // 로컬 저장소에서 액세스 토큰 및 회원 ID 제거
                     localStorage.removeItem("accessToken");
@@ -59,7 +58,6 @@ const Header = ({ openModal }) => {
             alert("로그아웃에 실패했습니다. 다시 시도해주세요.");
         }
     };
-
 
 
     const handleSearch = () => {

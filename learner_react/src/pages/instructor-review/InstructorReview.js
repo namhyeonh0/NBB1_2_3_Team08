@@ -8,7 +8,6 @@ const InstructorReview = () => {
     const {nickname} = useParams();
     const [reviewList, setReviewList] = useState([]);
     const [averageRating, setAverageRating] = useState(0);
-    const [userId, setUserId] = useState('');
     const [courseList, setCourseList] = useState([]);
     const navigate = useNavigate();
     const [writerId, setWriterId] = useState(null);
@@ -88,8 +87,8 @@ const InstructorReview = () => {
         const token = localStorage.getItem("accessToken");
         try {
             const response = await axios.get(`http://localhost:8080/members/${nickname}/follower`, {
-                headers: { "Authorization": `Bearer ${token}` },
-                params: { writerId: writerId },
+                headers: {"Authorization": `Bearer ${token}`},
+                params: {writerId: writerId},
                 withCredentials: true
             });
             setFollowers(response.data);
@@ -104,7 +103,7 @@ const InstructorReview = () => {
         try {
             const response = await axios.get(`http://localhost:8080/members/${nickname}/following`, {
                 headers: {"Authorization": `Bearer ${token}`},
-                params: { writerId: writerId },  // writerId를 쿼리 파라미터로 전달
+                params: {writerId: writerId},  // writerId를 쿼리 파라미터로 전달
                 withCredentials: true
             });
             setFollowing(response.data);
@@ -271,7 +270,8 @@ const InstructorReview = () => {
                             <li key={follower.memberId} className="modal-item">
                                 <div className="modal-item-info">
                                     <span className="nickname">{follower.nickname}</span>
-                                    <span className={`follow-status ${follower.isFollowing ? "following" : "not-following"}`}>
+                                    <span
+                                        className={`follow-status ${follower.isFollowing ? "following" : "not-following"}`}>
                             {follower.isFollowing ? "팔로잉" : "팔로우"}
                         </span>
                                 </div>

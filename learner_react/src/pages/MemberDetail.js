@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { useLocation } from "react-router-dom";
+import {useLocation} from "react-router-dom";
 
 const MemberDetail = () => {
     const location = useLocation();
-    const { memberData } = location.state || {};
+    const {memberData} = location.state || {};
 
     if (!memberData) {
         return <ErrorMessage>사용자 정보를 불러오는 중 오류가 발생했습니다.</ErrorMessage>;
@@ -18,7 +18,7 @@ const MemberDetail = () => {
         <Container>
             <Title>{memberData.nickname}님의 프로필</Title>
             <ProfileSection>
-                <ProfilePicture src={profileImageSrc} alt="Profile" />
+                <ProfilePicture src={profileImageSrc} alt="Profile"/>
             </ProfileSection>
             <UserInfoSection>
                 <UserInfo>

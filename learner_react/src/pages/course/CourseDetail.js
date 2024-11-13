@@ -12,7 +12,7 @@ import CourseInquiryList from "../CourseInquiryList";
 const defaultImage = "/images/course_default_img.png";
 
 const CourseDetail = () => {
-    const { courseId } = useParams();
+    const {courseId} = useParams();
     const [course, setCourse] = useState(null);
     const [activeTab, setActiveTab] = useState("curriculum");
     const role = localStorage.getItem("role"); // localStorage에서 role 가져오기
@@ -20,7 +20,7 @@ const CourseDetail = () => {
 
     useEffect(() => {
         axios
-            .get(`/course/${courseId}`,{ withCredentials: true })
+            .get(`/course/${courseId}`, {withCredentials: true})
             .then((response) => {
                 setCourse(response.data);
             })
@@ -38,7 +38,7 @@ const CourseDetail = () => {
     const handleDeleteCourse = async () => {
         if (window.confirm("정말로 이 강의를 삭제하시겠습니까?")) {
             try {
-                await axios.delete(`/course/${courseId}`,{ withCredentials: true });
+                await axios.delete(`/course/${courseId}`, {withCredentials: true});
                 alert("강의가 성공적으로 삭제되었습니다.");
                 navigate("/courses"); // 삭제 후 강의 목록 페이지로 이동
             } catch (error) {
@@ -65,7 +65,8 @@ const CourseDetail = () => {
                         <CourseDescription>{course.courseDescription}</CourseDescription>
                         <Instructor>
                             <InstructorName>강사 : {course.memberNickname}</InstructorName>
-                            <StyledButton onClick={() => navigate(`/members/instructor/${course.memberNickname}`)}>강사 페이지</StyledButton>
+                            <StyledButton onClick={() => navigate(`/members/instructor/${course.memberNickname}`)}>강사
+                                페이지</StyledButton>
                         </Instructor>
 
                     </CourseDetails>
@@ -80,7 +81,7 @@ const CourseDetail = () => {
                 </AdminControls>
             )}
 
-            <Separator />
+            <Separator/>
             {/* 구분선 */}
             <Separator/>
 
@@ -104,15 +105,15 @@ const CourseDetail = () => {
 
             {/* 탭에 따라 내용 변경 */}
             <TabContent>
-                {activeTab === "curriculum" && <VideoList /> } {/* VideoList 컴포넌트 추가 */}
+                {activeTab === "curriculum" && <VideoList/>} {/* VideoList 컴포넌트 추가 */}
                 {activeTab === "reviews" && (
                     <>
                         <CourseReview courseId={courseId}/>
                     </>
                 )}
 
-                {activeTab === "questions" && <CourseInquiryList courseId={courseId} />}
-                {activeTab === "news" && <CourseNewsList courseId={courseId} />}
+                {activeTab === "questions" && <CourseInquiryList courseId={courseId}/>}
+                {activeTab === "news" && <CourseNewsList courseId={courseId}/>}
             </TabContent>
         </DetailPage>
     );
@@ -174,15 +175,16 @@ const TabMenu = styled.div`
 
 const Tab = styled.button`
     padding: 1rem 2rem;
-    background-color: ${(props) => (props.active ? "#3cb371" : "#f9f9f9")};  /* 기본 배경색 설정 */
+    background-color: ${(props) => (props.active ? "#3cb371" : "#f9f9f9")}; /* 기본 배경색 설정 */
     border: none;
-    border-bottom: ${(props) => (props.active ? "2px solid #3cb371" : "2px solid #ddd")};  /* 탭 활성화 시 구분선 */
+    border-bottom: ${(props) => (props.active ? "2px solid #3cb371" : "2px solid #ddd")}; /* 탭 활성화 시 구분선 */
     font-size: 1rem;
-    color: ${(props) => (props.active ? "#fff" : "#333")};  /* 활성화된 탭의 글자색 */
+    color: ${(props) => (props.active ? "#fff" : "#333")}; /* 활성화된 탭의 글자색 */
     cursor: pointer;
+
     &:hover {
-        background-color: #3cb371;  /* 호버 시 배경색 변경 */
-        color: #fff;  /* 호버 시 글자색 변경 */
+        background-color: #3cb371; /* 호버 시 배경색 변경 */
+        color: #fff; /* 호버 시 글자색 변경 */
         border-bottom: 2px solid #3cb371;
     }
 `;
@@ -207,13 +209,13 @@ const AdminControls = styled.div`
     display: flex;
     justify-content: flex-start;
     gap: 1rem;
-    padding: 20px;  /* 내부 여백 추가 */
-    background-color: #f9f9f9;  /* 배경색 설정 */
-    border-radius: 10px;  /* 모서리 둥글게 */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* 그림자 추가 */
-    max-width: 800px;  /* 최대 너비 설정 */
-    width: 100%;  /* 너비를 100%로 설정 */
-    box-sizing: border-box;  /* 패딩 포함한 너비 계산 */
+    padding: 20px; /* 내부 여백 추가 */
+    background-color: #f9f9f9; /* 배경색 설정 */
+    border-radius: 10px; /* 모서리 둥글게 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+    max-width: 800px; /* 최대 너비 설정 */
+    width: 100%; /* 너비를 100%로 설정 */
+    box-sizing: border-box; /* 패딩 포함한 너비 계산 */
 `;
 
 const UpdateButton = styled.button`
@@ -223,6 +225,7 @@ const UpdateButton = styled.button`
     border: none;
     border-radius: 5px;
     cursor: pointer;
+
     &:hover {
         background-color: #2a9d63;
     }
@@ -235,6 +238,7 @@ const DeleteButton = styled.button`
     border: none;
     border-radius: 5px;
     cursor: pointer;
+
     &:hover {
         background-color: #c0392b;
     }

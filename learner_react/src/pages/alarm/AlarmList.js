@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, {useEffect, useState} from "react";
 import axiosInstance from "../axiosInstance";
 import styled from "styled-components";
 
@@ -39,7 +38,7 @@ const AlarmList = () => {
         }
         setLoading(true); // 로딩 시작
         try {
-            const response = await axiosInstance.get(`/alarm/member/${memberId}`, { withCredentials: true });
+            const response = await axiosInstance.get(`/alarm/member/${memberId}`, {withCredentials: true});
             if (Array.isArray(response.data)) {
                 setAlarms(response.data);
             } else {

@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, {useEffect, useState} from "react";
 import axios from "../axiosInstance";
-import { useParams, useNavigate } from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import styled from "styled-components";
 
 const AddVideo = () => {
-    const { courseId } = useParams();
+    const {courseId} = useParams();
     const [title, setTitle] = useState("");
     const [url, setUrl] = useState("");
     const [description, setDescription] = useState("");
@@ -47,7 +47,7 @@ const AddVideo = () => {
                 role       // role 포함
             };
 
-            await axios.post('http://localhost:8080/video', payload, { withCredentials: true });
+            await axios.post('http://localhost:8080/video', payload, {withCredentials: true});
 
             alert("강의 생성에 성공하였습니다.");
             navigate("/courses/list");
@@ -63,17 +63,17 @@ const AddVideo = () => {
             <form onSubmit={handleSubmit}>
                 <Label>
                     제목:
-                    <Input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required />
+                    <Input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required/>
                 </Label>
                 <Label>
                     URL:
-                    <Input type="text" value={url} onChange={(e) => setUrl(e.target.value)} required />
+                    <Input type="text" value={url} onChange={(e) => setUrl(e.target.value)} required/>
                 </Label>
                 <Label>
                     설명:
-                    <Input type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
+                    <Input type="text" value={description} onChange={(e) => setDescription(e.target.value)}/>
                 </Label>
-                {error && <p style={{ color: "red" }}>{error}</p>}
+                {error && <p style={{color: "red"}}>{error}</p>}
                 <Button type="submit">추가</Button>
             </form>
         </FormContainer>

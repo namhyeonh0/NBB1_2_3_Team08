@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {useNavigate, useParams} from "react-router-dom";
 import styled from "styled-components";
 import axiosInstance from "../axiosInstance";
 
 const InstructorReviewEdit = () => {
-    const { reviewId, nickname } = useParams(); // instructorId, reviewId, nickname 가져오기
+    const {reviewId, nickname} = useParams(); // instructorId, reviewId, nickname 가져오기
     const navigate = useNavigate();
 
     const [reviewName, setReviewName] = useState("");
@@ -20,7 +20,7 @@ const InstructorReviewEdit = () => {
         // /token/decode API 호출로 mid 가져오기
         axiosInstance.get('/token/decode')
             .then(response => {
-                const { mid } = response.data;
+                const {mid} = response.data;
                 setWriterId(mid);
             })
             .catch(error => {
@@ -48,7 +48,6 @@ const InstructorReviewEdit = () => {
             })
             .catch(err => console.error("강의 목록 가져오기 실패:", err));
     }, [nickname, reviewId]);
-
 
 
     const handleSubmit = (e) => {
@@ -134,7 +133,8 @@ const InstructorReviewEdit = () => {
                 </InputContainer>
                 <ButtonContainer>
                     <SubmitButton type="submit">수정</SubmitButton>
-                    <CancelButton type="button" onClick={() => navigate(`/members/instructor/${nickname}`)}>취소</CancelButton>
+                    <CancelButton type="button"
+                                  onClick={() => navigate(`/members/instructor/${nickname}`)}>취소</CancelButton>
                 </ButtonContainer>
             </Form>
         </FormContainer>
@@ -177,6 +177,7 @@ const Input = styled.input`
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 1rem;
+
     &:focus {
         border-color: #3cb371;
         outline: none;
@@ -190,6 +191,7 @@ const TextArea = styled.textarea`
     font-size: 1rem;
     height: 150px;
     resize: none;
+
     &:focus {
         border-color: #3cb371;
         outline: none;
@@ -217,6 +219,7 @@ const SubmitButton = styled.button`
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
+
     &:hover {
         background-color: #2a9d63;
     }
@@ -230,6 +233,7 @@ const CancelButton = styled.button`
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
+
     &:hover {
         background-color: #bbb;
     }

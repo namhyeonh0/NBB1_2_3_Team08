@@ -1,11 +1,10 @@
-import { useParams, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import {useNavigate, useParams} from "react-router-dom";
+import {useEffect, useState} from "react";
 import styled from "styled-components";
-import { jwtDecode } from "jwt-decode";
 import axiosInstance from './axiosInstance';
 
 export default function CourseNews() {
-    const { courseId, newsId } = useParams();
+    const {courseId, newsId} = useParams();
     const navigate = useNavigate();
     const [news, setNews] = useState(null);
     const [liked, setLiked] = useState(false);
@@ -64,7 +63,7 @@ export default function CourseNews() {
         // const memberId = localStorage.getItem('memberId');
         try {
             const response = await axiosInstance.get(`/course/${courseId}/news/${newsId}/like`, {
-                params: { userId }
+                params: {userId}
             });
             setLiked(response.data);
         } catch (err) {
@@ -120,7 +119,6 @@ export default function CourseNews() {
             alert('좋아요 처리 중 오류가 발생했습니다.');
         }
     };
-
 
 
     const deleteNews = async () => {
@@ -221,6 +219,7 @@ const NewsMetaInfo = styled.div`
 
     span {
         margin-right: 20px;
+
         &:last-child {
             margin-right: 0;
         }

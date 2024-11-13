@@ -1,6 +1,6 @@
 // Instructor.js
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {useParams} from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
 import InstructorReview from "./instructor-review/InstructorReview"; // Import your list
@@ -8,7 +8,7 @@ import InstructorReview from "./instructor-review/InstructorReview"; // Import y
 const defaultImage = "/images/instructor_default_img.png";
 
 const Instructor = () => {
-    const { nickname } = useParams();
+    const {nickname} = useParams();
     const [instructor, setInstructor] = useState(null);
     const [reviews, setReviews] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -76,7 +76,7 @@ const Instructor = () => {
                 </InstructorInfo>
             )}
             {/* 리뷰 목록을 InstructorReviewList로 전달 */}
-            <InstructorReview reviews={reviews} />
+            <InstructorReview reviews={reviews}/>
         </PageContainer>
     );
 };

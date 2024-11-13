@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {Link, useNavigate} from "react-router-dom";
 import axiosInstance from "../axiosInstance";
 import styled from "styled-components";
 
@@ -10,7 +10,7 @@ const Orders = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
-    const [userRole, setUserRole] = useState(null);
+    const [setUserRole] = useState(null);
     const [memberId, setMemberId] = useState(null);
 
 
@@ -44,7 +44,7 @@ const Orders = () => {
         }
         setLoading(true); // 로딩 시작
         try {
-            const response = await axiosInstance.get(`/order/list/${memberId}`, { withCredentials: true });
+            const response = await axiosInstance.get(`/order/list/${memberId}`, {withCredentials: true});
             if (Array.isArray(response.data)) {
                 setOrders(response.data);
             } else {
@@ -83,10 +83,13 @@ const Orders = () => {
 
     const handlePurchase = async (orderId) => {
         try {
-            const response = await axiosInstance.post(`order/purchase/${orderId}`, { orderId, memberId }, { withCredentials: true });
+            const response = await axiosInstance.post(`order/purchase/${orderId}`, {
+                orderId,
+                memberId
+            }, {withCredentials: true});
             alert("결제가 완료되었습니다. 주문 ID: " + response.data.orderId);
             // 성공적으로 결제 후 해당 주문 제거
-            await axiosInstance.delete(`order/${orderId}`, { withCredentials: true });
+            await axiosInstance.delete(`order/${orderId}`, {withCredentials: true});
             window.location.reload();
         } catch (error) {
             console.error("결제 중 오류 발생:", error);

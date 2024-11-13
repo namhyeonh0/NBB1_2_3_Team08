@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom"; // 추가: useLocation import
 import styled from "styled-components";
-import { useLocation } from "react-router-dom"; // 추가: useLocation import
 
 const defaultImage = "/images/course_default_img.png";
 
@@ -12,7 +11,6 @@ const Courses = () => {
     const [filteredCourses, setFilteredCourses] = useState([]); // 필터링된 강의 목록 상태 추가
     const [role, setRole] = useState(""); // role을 상태로 저장
     const navigate = useNavigate();
-    const location = useLocation(); // 추가: location 사용
 
     // memberId를 로컬 저장소에 저장하는 useEffect
     useEffect(() => {
@@ -117,14 +115,14 @@ const Courses = () => {
             )}
 
             {checkUser() && (
-            <ChatButton onClick={handleChatClick}>
-                채팅💬
-            </ChatButton>)}
+                <ChatButton onClick={handleChatClick}>
+                    채팅💬
+                </ChatButton>)}
 
             <CourseList>
                 {filteredCourses.length > 0 ? (
                     filteredCourses.map((course) => (
-                        <CourseItem key={course.courseId} course={course} navigate={navigate} />
+                        <CourseItem key={course.courseId} course={course} navigate={navigate}/>
                     ))
                 ) : (
                     <p>검색 결과가 없습니다.</p>
@@ -134,14 +132,14 @@ const Courses = () => {
     );
 };
 
-const CourseItem = ({ course, navigate }) => {
+const CourseItem = ({course, navigate}) => {
     const handleClick = () => {
         navigate(`/courses/${course.courseId}`);
     };
 
     return (
         <StyledCourseItem onClick={handleClick}>
-            <CourseImage src={defaultImage} alt="Course Banner" />
+            <CourseImage src={defaultImage} alt="Course Banner"/>
             <h3>{course.courseName}</h3>
             <p>{course.instructorName}</p>
             <p>{course.coursePrice}원</p>
@@ -235,6 +233,7 @@ const CreateCourseButton = styled.button`
     border: none;
     border-radius: 5px;
     cursor: pointer;
+
     &:hover {
         background-color: #2a9d63;
     }

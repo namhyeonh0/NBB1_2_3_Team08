@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, {useEffect, useState} from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import axiosInstance from "../axiosInstance";
 
 const OrderCreate = () => {
-    const [orderItems, setOrderItems] = useState([{ courseId: "", price: "" }]);
+    const [orderItems, setOrderItems] = useState([{courseId: "", price: ""}]);
     const [courses, setCourses] = useState([]);
     const [purchasedCourses, setPurchasedCourses] = useState({});
     const [error, setError] = useState(null);
@@ -36,7 +36,6 @@ const OrderCreate = () => {
     };
 
 
-
     useEffect(() => {
         checkUserRole(); // 사용자 역할 및 memberId 확인
     }, []); // 컴포넌트가 마운트될 때 한 번만 호출
@@ -45,7 +44,7 @@ const OrderCreate = () => {
         const fetchCourses = async () => {
             if (!memberId) return; // memberId가 없을 경우 호출하지 않음
             try {
-                const response = await axiosInstance.get('http://localhost:8080/course/list', { withCredentials: true });
+                const response = await axiosInstance.get('http://localhost:8080/course/list', {withCredentials: true});
                 setCourses(response.data);
             } catch (error) {
                 if (error.response && error.response.status === 401) {
@@ -86,8 +85,6 @@ const OrderCreate = () => {
     // }, [courses, memberId]); // purchasedCourses 삭제
 
 
-
-
     const handleChange = (index, event) => {
         const values = [...orderItems];
         values[index][event.target.name] = event.target.value;
@@ -99,7 +96,7 @@ const OrderCreate = () => {
     };
 
     const handleAddItem = () => {
-        setOrderItems([...orderItems, { courseId: "", price: "" }]);
+        setOrderItems([...orderItems, {courseId: "", price: ""}]);
     };
 
     const handleRemoveItem = (index) => {
@@ -114,7 +111,7 @@ const OrderCreate = () => {
             const response = await axiosInstance.post(`http://localhost:8080/order/${memberId}`, {
                 orderItemDTOList: orderItems,
                 memberId: memberId,
-            }, { withCredentials: true });
+            }, {withCredentials: true});
 
             setError("주문이 성공적으로 생성되었습니다!");
 

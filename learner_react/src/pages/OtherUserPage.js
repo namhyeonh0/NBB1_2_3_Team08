@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {useParams} from "react-router-dom";
 import styled from "styled-components";
 
 const OtherUserPage = () => {
-    const { nickname } = useParams();
+    const {nickname} = useParams();
     const [userInfo, setUserInfo] = useState(null);
     const [errorMessage, setErrorMessage] = useState("");
 

@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { useParams } from 'react-router-dom';
+import {useNavigate, useParams} from "react-router-dom";
 import styled from "styled-components";
 import axiosInstance from "../axiosInstance";
 
 const CourseInquiryList = () => {
-    const { courseId } = useParams(); // URL에서 courseId 파라미터 가져오기
+    const {courseId} = useParams(); // URL에서 courseId 파라미터 가져오기
     const navigate = useNavigate();
     const [inquiries, setInquiries] = useState([]);
     const [selectedInquiry, setSelectedInquiry] = useState(null);
@@ -24,7 +23,7 @@ const CourseInquiryList = () => {
     useEffect(() => {
         setLoading(true);
         axios
-            .get(`http://localhost:8080/course/${courseId}/course-inquiry/sorted`, { withCredentials: true })
+            .get(`http://localhost:8080/course/${courseId}/course-inquiry/sorted`, {withCredentials: true})
             .then((response) => {
                 setInquiries(response.data);
                 setLoading(false);
@@ -90,7 +89,7 @@ const CourseInquiryList = () => {
                 } else {
                     console.error("해당 inquiryId의 문의를 찾을 수 없습니다.");
                 }
-                return axios.get(`http://localhost:8080/course/${courseId}/course-answer/${inquiryId}`, { withCredentials: true });
+                return axios.get(`http://localhost:8080/course/${courseId}/course-answer/${inquiryId}`, {withCredentials: true});
             })
             .then((response) => {
                 const fetchedAnswers = response.data;
@@ -138,7 +137,7 @@ const CourseInquiryList = () => {
             // 답변 제출 후 답변 목록 새로고침
             const response = await axios.get(
                 `http://localhost:8080/course/${courseId}/course-answer/${selectedInquiry.inquiryId}`,
-                { withCredentials: true }
+                {withCredentials: true}
             );
 
             setAnswers(response.data);
@@ -212,7 +211,7 @@ const CourseInquiryList = () => {
                 setUpdatedAnswer("");
                 return axios.get(
                     `http://localhost:8080/course/${courseId}/course-answer/${selectedInquiry.inquiryId}`,
-                    { withCredentials: true }
+                    {withCredentials: true}
                 );
             })
             .then((response) => {
@@ -267,7 +266,7 @@ const CourseInquiryList = () => {
             })
             .then((response) => {
                 const memberData = response.data;
-                navigate(`/members/${userId}`, { state: { memberData } });  // 사용자 정보 페이지로 이동
+                navigate(`/members/${userId}`, {state: {memberData}});  // 사용자 정보 페이지로 이동
             })
             .catch((error) => {
                 console.error("Error fetching member details:", error);
@@ -308,15 +307,15 @@ const CourseInquiryList = () => {
                                 <InquiryDetail>
                                     <h3>{selectedInquiry.inquiryTitle}</h3>
                                     <p>
-                                        <span style={{ whiteSpace: "pre-line" }}>{selectedInquiry.inquiryContent}</span>
+                                        <span style={{whiteSpace: "pre-line"}}>{selectedInquiry.inquiryContent}</span>
                                     </p>
-                                    <p style={{ fontSize: "0.9rem", color: "#555", marginTop: "3rem" }}>
+                                    <p style={{fontSize: "0.9rem", color: "#555", marginTop: "3rem"}}>
                                         <ProfileImage
                                             src={profileImageSrc}
                                             alt="작성자 프로필"
                                         />
                                         <span
-                                            style={{ cursor: "pointer", textDecoration: "underline", color: "blue" }}
+                                            style={{cursor: "pointer", textDecoration: "underline", color: "blue"}}
                                             onClick={() => handleMemberClick(selectedInquiry.memberId)}
                                         >
                                         작성자: {selectedInquiry.memberNickname || '알 수 없음'}
@@ -327,7 +326,8 @@ const CourseInquiryList = () => {
                                 </InquiryDetail>
 
                                 {(userRole === "ROLE_ADMIN" || userRole === "ROLE_INSTRUCTOR") && (
-                                    <StatusSelect value={inquiryStatus} onChange={(e) => handleStatusChange(e.target.value)}>
+                                    <StatusSelect value={inquiryStatus}
+                                                  onChange={(e) => handleStatusChange(e.target.value)}>
                                         <option value="PENDING">PENDING</option>
                                         <option value="ANSWERED">ANSWERED</option>
                                         <option value="RESOLVED">RESOLVED</option>
@@ -348,11 +348,12 @@ const CourseInquiryList = () => {
                                                         // 수정 폼
                                                         <>
                                                         <textarea
-                                                            style={{ width: "100%", height: "100px", fontSize: "1rem" }}
+                                                            style={{width: "100%", height: "100px", fontSize: "1rem"}}
                                                             value={updatedAnswer}
                                                             onChange={(e) => setUpdatedAnswer(e.target.value)} // 수정된 내용 반영
                                                         />
-                                                            <UpdateSubmitButton onClick={() => handleEditAnswerSubmit(answer.answerId)}>
+                                                            <UpdateSubmitButton
+                                                                onClick={() => handleEditAnswerSubmit(answer.answerId)}>
                                                                 수정 제출
                                                             </UpdateSubmitButton>
                                                             <CancelButton onClick={handleCancelEdit}>
@@ -363,13 +364,21 @@ const CourseInquiryList = () => {
                                                         // 수정 중이 아닐 때 기존 답변 표시
                                                         <>
                                                             <p>{answer.answerContent}</p>
-                                                            <p style={{ fontSize: "0.9rem", color: "#555", marginTop: "3rem" }}>
+                                                            <p style={{
+                                                                fontSize: "0.9rem",
+                                                                color: "#555",
+                                                                marginTop: "3rem"
+                                                            }}>
                                                                 <ProfileImage
                                                                     src={answerProfileImageSrc}
                                                                     alt="작성자 프로필"
                                                                 />
                                                                 <span
-                                                                    style={{ cursor: "pointer", textDecoration: "underline", color: "blue" }}
+                                                                    style={{
+                                                                        cursor: "pointer",
+                                                                        textDecoration: "underline",
+                                                                        color: "blue"
+                                                                    }}
                                                                     onClick={() => handleMemberClick(answer.memberId)}
                                                                 >
                                                                 작성자: {answer.memberNickname || '알 수 없음'}
@@ -378,12 +387,13 @@ const CourseInquiryList = () => {
                                                             </p>
                                                             {(userRole === "ROLE_ADMIN" || userRole === "ROLE_INSTRUCTOR") && (
                                                                 <>
-                                                                    <AnswerButton onClick={() => handleEditAnswerClick(answer)}>
+                                                                    <AnswerButton
+                                                                        onClick={() => handleEditAnswerClick(answer)}>
                                                                         수정
                                                                     </AnswerButton>
                                                                     <AnswerButton
                                                                         onClick={() => handleDeleteAnswer(answer.answerId, answer.memberId)}
-                                                                        style={{ marginLeft: "10px" }}
+                                                                        style={{marginLeft: "10px"}}
                                                                     >
                                                                         삭제
                                                                     </AnswerButton>
@@ -424,17 +434,22 @@ const CourseInquiryList = () => {
                                         : "http://localhost:8080/images/default_profile.jpg"; // 기본 이미지 경로
 
                                     return (
-                                        <InquiryItem key={inquiry.inquiryId} onClick={() => handleInquiryClick(inquiry.inquiryId)}>
+                                        <InquiryItem key={inquiry.inquiryId}
+                                                     onClick={() => handleInquiryClick(inquiry.inquiryId)}>
                                             <p>
                                                 <strong>{inquiry.inquiryTitle}</strong>
                                             </p>
-                                            <p style={{ fontSize: "0.9rem", color: "#555" }}>
+                                            <p style={{fontSize: "0.9rem", color: "#555"}}>
                                                 <ProfileImage
                                                     src={inquiryProfileImageSrc}  // 문의마다 다른 이미지 소스 사용
                                                     alt="작성자 프로필"
                                                 />
                                                 <span
-                                                    style={{ cursor: "pointer", textDecoration: "underline", color: "blue" }}
+                                                    style={{
+                                                        cursor: "pointer",
+                                                        textDecoration: "underline",
+                                                        color: "blue"
+                                                    }}
                                                     onClick={() => handleMemberClick(inquiry.memberId)}
                                                 >
                                                 작성자: {inquiry.memberNickname || '알 수 없음'}
@@ -520,6 +535,7 @@ const SubmitButton = styled.button`
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
+
     &:hover {
         background-color: #2a9d63;
     }
@@ -534,6 +550,7 @@ const UpdateSubmitButton = styled.button`
     border: none;
     border-radius: 5px;
     cursor: pointer;
+
     &:hover {
         background-color: #2a9d63;
     }
@@ -546,6 +563,7 @@ const CancelButton = styled.button`
     border: none;
     border-radius: 5px;
     cursor: pointer;
+
     &:hover {
         background-color: #bbb;
     }
@@ -565,6 +583,7 @@ const WriteButton = styled.button`
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
+
     &:hover {
         background-color: #2a9d63;
     }
@@ -578,6 +597,7 @@ const BeforeButton = styled.button`
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
+
     &:hover {
         background-color: #2a9d63;
     }
@@ -592,6 +612,7 @@ const DeleteInquiryButton = styled.button`
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
+
     &:hover {
         background-color: #c0392b;
     }
@@ -610,6 +631,7 @@ const AnswerButton = styled.button`
     border: none;
     border-radius: 5px;
     cursor: pointer;
+
     &:hover {
         background-color: #2a9d63;
     }

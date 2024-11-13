@@ -3,7 +3,6 @@ import styled from "styled-components";
 import WeeklyStudyTable from "../components/study-table/WeeklyStudyTable";
 import YearlyStudyTable from "../components/study-table/YearlyStudyTable";
 import axiosInstance from './axiosInstance'; // axiosInstance import
-import axios from "axios"; // js-cookie 패키지 import
 
 const MyPage = () => {
     const [userInfo, setUserInfo] = useState(null);
@@ -16,7 +15,7 @@ const MyPage = () => {
         // /token/decode API 호출로 mid와 role 가져오기
         axiosInstance.get('/token/decode')
             .then(response => {
-                const { mid } = response.data;
+                const {mid} = response.data;
                 setMid(mid)
 
                 // 첫 번째 메서드 실행
@@ -73,7 +72,7 @@ const MyPage = () => {
     const handleLogout = () => {
         try {
             // 서버에 로그아웃 요청 보내기 (쿠키 포함)
-            axiosInstance.post("/join/logout", null, { withCredentials: true })
+            axiosInstance.post("/join/logout", null, {withCredentials: true})
                 .then(() => {
                     // 로컬 저장소에서 액세스 토큰 및 회원 ID 제거
                     localStorage.removeItem("accessToken");

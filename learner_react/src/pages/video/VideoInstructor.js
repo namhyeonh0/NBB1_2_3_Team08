@@ -1,22 +1,21 @@
-import React, { useEffect, useState } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import axios from "../axiosInstance";
 import styled from "styled-components";
-import { jwtDecode } from "jwt-decode";
+import {jwtDecode} from "jwt-decode";
 import Cookies from "js-cookie";
-import { handlePlayClick } from "./HandlePlayClick";
 
 const Course_Url = "http://localhost:8080/course";
 const Video_Url = "http://localhost:8080/video";
 
 const VideoList = () => {
-    const { courseId } = useParams();
+    const {courseId} = useParams();
     const [videos, setVideos] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
-    const [role, setRole] = useState(null);
-    const [memberNickname, setMemberNickName] = useState(null);
+    const [setRole] = useState(null);
+    const [setMemberNickName] = useState(null);
 
     useEffect(() => {
         const decodeJwt = (token) => {
@@ -38,7 +37,7 @@ const VideoList = () => {
         const fetchVideos = async () => {
             setLoading(true);
             try {
-                const response = await axios.get(`${Course_Url}/video/${courseId}`,{ withCredentials: true });
+                const response = await axios.get(`${Course_Url}/video/${courseId}`, {withCredentials: true});
                 setVideos(response.data);
             } catch (error) {
                 console.error("비디오 목록 가져오는 중 오류 발생:", error.response ? error.response.data : error.message);
@@ -54,7 +53,7 @@ const VideoList = () => {
     const handleDeleteClick = async (videoId) => {
         if (window.confirm("정말로 이 비디오를 삭제하시겠습니까?")) {
             try {
-                await axios.delete(`${Video_Url}/${videoId}`,{ withCredentials: true });
+                await axios.delete(`${Video_Url}/${videoId}`, {withCredentials: true});
                 setVideos(videos.filter(video => video.videoId !== videoId));
             } catch (error) {
                 console.error("비디오 삭제 중 오류 발생:", error);
@@ -69,9 +68,9 @@ const VideoList = () => {
     return (
         <Container>
             <Header>비디오 목록</Header>
-                <Link to={`/video/create/${courseId}`}>
-                    <StyledButton>비디오 추가</StyledButton>
-                </Link>
+            <Link to={`/video/create/${courseId}`}>
+                <StyledButton>비디오 추가</StyledButton>
+            </Link>
             {videos.length > 0 ? (
                 videos.map((video, index) => (
                     <VideoItem key={video.videoId}>

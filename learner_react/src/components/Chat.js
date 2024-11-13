@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import SockJS from 'sockjs-client';
-import { Client } from '@stomp/stompjs';
+import {Client} from '@stomp/stompjs';
 import axiosInstance from "../pages/axiosInstance";
 
 const Chat = () => {
@@ -80,7 +80,8 @@ const Chat = () => {
                         timestamp: new Date().getTime()
                     })
 
-            });}
+                });
+            }
             setIsConnected(true);
 
         } catch (error) {
@@ -184,7 +185,7 @@ const Chat = () => {
                             color: msg.sender === username ? 'white' : 'black'
                         }}>
                             {msg.type === 'JOIN' || msg.type === 'LEAVE' ? (
-                                <div style={{ textAlign: 'center', color: '#666' }}>
+                                <div style={{textAlign: 'center', color: '#666'}}>
                                     {msg.content}
                                 </div>
                             ) : (
@@ -199,7 +200,7 @@ const Chat = () => {
             </div>
 
             {isConnected ? (
-                <form onSubmit={sendMessage} style={{ display: 'flex', gap: '10px' }}>
+                <form onSubmit={sendMessage} style={{display: 'flex', gap: '10px'}}>
                     <input
                         type="text"
                         value={message}

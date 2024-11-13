@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {useNavigate, useParams} from "react-router-dom";
 import styled from "styled-components";
 import axiosInstance from "../axiosInstance";
 
 const CourseReviewEdit = () => {
-    const { courseId, reviewId } = useParams();
+    const {courseId, reviewId} = useParams();
     const navigate = useNavigate();
 
     const [reviewName, setReviewName] = useState("");
@@ -17,7 +17,7 @@ const CourseReviewEdit = () => {
         // /token/decode API 호출로 mid 가져오기
         axiosInstance.get('/token/decode')
             .then(response => {
-                const { mid } = response.data;
+                const {mid} = response.data;
                 setWriterId(mid);
             })
             .catch(error => {
@@ -144,6 +144,7 @@ const Input = styled.input`
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 1rem;
+
     &:focus {
         border-color: #3cb371;
         outline: none;
@@ -157,6 +158,7 @@ const TextArea = styled.textarea`
     font-size: 1rem;
     height: 150px;
     resize: none;
+
     &:focus {
         border-color: #3cb371;
         outline: none;
@@ -184,6 +186,7 @@ const SubmitButton = styled.button`
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
+
     &:hover {
         background-color: #2a9d63;
     }
@@ -197,6 +200,7 @@ const CancelButton = styled.button`
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
+
     &:hover {
         background-color: #bbb;
     }

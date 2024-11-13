@@ -1,8 +1,8 @@
 // MemberListManagement.js
 
-import React, { useState, useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import axiosInstance from '../axiosInstance';
 import styled from "styled-components";
 
@@ -18,9 +18,12 @@ const MemberListManagement = () => {
         setLoading(true);
         axios
             .get(`http://localhost:8080/members/list`
-                , { withCredentials: true,
-                            headers: {Authorization: `Bearer ${localStorage.getItem('accessToken')}`
-                }})
+                , {
+                    withCredentials: true,
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                    }
+                })
             .then((response) => {
                 setLoading(false);
                 setMembers(response.data);
@@ -81,21 +84,21 @@ const MemberListManagement = () => {
             <table>
                 <thead>
                 <tr>
-                    <th style={{ textAlign: 'center' }}>회원 ID</th>
-                    <th style={{ textAlign: 'center' }}>이름</th>
-                    <th style={{ textAlign: 'center' }}>이메일</th>
-                    <th style={{ textAlign: 'center' }}>전화번호</th>
-                    <th style={{ textAlign: 'center' }}>가입일</th>
+                    <th style={{textAlign: 'center'}}>회원 ID</th>
+                    <th style={{textAlign: 'center'}}>이름</th>
+                    <th style={{textAlign: 'center'}}>이메일</th>
+                    <th style={{textAlign: 'center'}}>전화번호</th>
+                    <th style={{textAlign: 'center'}}>가입일</th>
                 </tr>
                 </thead>
                 <tbody>
                 {members.map((member) => (
                     <tr key={member.memberId}>
-                        <td style={{ textAlign: 'center' }}> {member.memberId}</td>
-                        <td style={{ textAlign: 'center' }}>{member.nickname}</td>
-                        <td style={{ textAlign: 'center' }}>{member.email}</td>
-                        <td style={{ textAlign: 'center' }}>{member.phoneNumber}</td>
-                        <td style={{ textAlign: 'center' }}>{member.createDate}</td>
+                        <td style={{textAlign: 'center'}}> {member.memberId}</td>
+                        <td style={{textAlign: 'center'}}>{member.nickname}</td>
+                        <td style={{textAlign: 'center'}}>{member.email}</td>
+                        <td style={{textAlign: 'center'}}>{member.phoneNumber}</td>
+                        <td style={{textAlign: 'center'}}>{member.createDate}</td>
                         {/*<td>*/}
                         {/*    <button onClick={() => handleMemberClick(member.memberId)}>*/}
                         {/*        상세보기*/}

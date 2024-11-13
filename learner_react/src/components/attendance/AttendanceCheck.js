@@ -1,6 +1,5 @@
 import {useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
-import axios from 'axios';
 import axiosInstance from '../../pages/axiosInstance';
 
 const AttendanceCheck = () => {
@@ -27,7 +26,7 @@ const AttendanceCheck = () => {
 
             if (!isAttendedToday) {
                 const token = localStorage.getItem('accessToken');
-                await axiosInstance.post('attendances', {memberId: Number(memberId)}, {headers: {'Authorization' : `Bearer ${token}`}});
+                await axiosInstance.post('attendances', {memberId: Number(memberId)}, {headers: {'Authorization': `Bearer ${token}`}});
             }
             setAttendanceChecked(true); // 출석 체크 완료
         } catch (error) {

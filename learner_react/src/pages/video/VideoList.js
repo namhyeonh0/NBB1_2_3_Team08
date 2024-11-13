@@ -1,23 +1,21 @@
-import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {useNavigate, useParams} from "react-router-dom";
 import axiosInstance from "../axiosInstance"; // axiosInstance로 변경
 import styled from "styled-components";
-import { jwtDecode } from "jwt-decode"; // named import
-import Cookies from "js-cookie"; // 쿠키 관리 라이브러리 추가
-import { handlePlayClick } from "./HandlePlayClick";
+import {handlePlayClick} from "./HandlePlayClick";
 
 const Course_Url = "http://localhost:8080/course";
 
 const VideoList = () => {
-    const { courseId } = useParams();
+    const {courseId} = useParams();
     const [videos, setVideos] = useState([]);
     const [averages, setAverages] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
     const [role, setRole] = useState(); // 사용자 역할 상태 추가
-    const [memberId, setMemberId] = useState();
-    const [memberNickname, setMemberNickName] = useState(); // 사용자 ID 상태 추가
+    const [setMemberId] = useState();
+    const [setMemberNickName] = useState(); // 사용자 ID 상태 추가
 
     const getInfoFromToken = async () => {
         try {
@@ -25,7 +23,7 @@ const VideoList = () => {
             if (!accessToken) return; // accessToken이 없으면 함수 종료
 
             const response = await axiosInstance.get('/token/decode');
-            const { mid, role, username } = response.data;
+            const {mid, role, username} = response.data;
 
             setMemberId(mid);
             setRole(role);

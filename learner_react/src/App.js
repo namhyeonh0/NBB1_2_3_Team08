@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import React, {useState} from "react";
+import {BrowserRouter as Router, Navigate, Route, Routes} from "react-router-dom";
 import Header from "./components/Header";
 import Courses from "./pages/Courses";
 import SignUp from "./pages/SignUp";
@@ -26,8 +26,7 @@ import InquiryDetail from "./pages/Inquiry/InquiryDetail";
 import InquiryRegistration from "./pages/Inquiry/InquiryRegistration";
 import MemberDetail from './pages/MemberDetail';
 import OtherUserPage from "./pages/OtherUserPage";
-import {NotificationContext} from "./components/NotificationContext";
-import {NotificationProvider} from "./components/NotificationContext";
+import {NotificationContext, NotificationProvider} from "./components/NotificationContext";
 import SendNotificationComponent from "./components/SendNotification"; // 컴포넌트 가져오기
 import NotificationDisplay from "./components/NotificationDisplay";
 import axios from "axios";
@@ -51,45 +50,47 @@ function App() {
 
     return (
         <NotificationProvider>
-        <Router>
-            <AttendanceCheck/>
-            <Header openModal={openModal}/>
-            {isModalOpen && <LoginModal closeModal={closeModal}/>}
-            <Routes>
-                <Route path="/" element={<Navigate to="/courses" />} />
-                <Route path="/signup" element={<SignUp />} />
-                <Route path="/courses" element={<Courses />} /> {/* 수정된 경로 */}
-                <Route path="/courses/:courseId/post" element={<PostCourseInquiry />} />
-                <Route path="/courses/:courseId/news/:newsId" element={<CourseNews />} />
-                <Route path="/내정보" element={<MyPage />} />
-                <Route path="/courses/:courseId/news/create" element={<CreateNews />} />
-                <Route path="/courses/:courseId/news/:newsId/edit" element={<UpdateNews />} />
-                <Route path="/edit-profile" element={<EditProfile />} />
-                <Route path="/courses/:courseId/reviews/create" element={<CourseReviewCreate />} />
-                <Route path="/courses/:courseId/reviews/:reviewId" element={<CourseReviewEdit />} />
-                <Route path="/members/instructor/:nickname" element={<Instructor />} />
-                <Route path="/members/instructor/:nickname/reviews/create" element={<InstructorReviewCreate />} />
-                <Route path="/members/instructor/:nickname/reviews/:reviewId" element={<InstructorReviewEdit />} />
-                <Route path="/video/:videoId/play" element={<YoutubePlayer />} /> {/* 추가된 부분 */}
-                <Route path="/*" element={<CourseRoutes />} /> {/* 모든 하위 경로를 CourseRoutes로 전달 */}
-                <Route path="/orders/*" element={<OrderRoutes />} />
-                <Route path="/video/*" element={<VideoRoutes />} /> {/* 비디오 관련 라우팅 추가 */}
-                <Route path="/members/instructor/:nickname/reviews/create" element={<InstructorReviewCreate />} /> {/* 강사 리뷰 생성 페이지 */}
-                <Route path="/members/instructor/:nickname/reviews/:reviewId" element={<InstructorReviewEdit />} /> {/* 강사 리뷰 수정 페이지 */}
-                <Route path="/reset-password/:uuid" element={<ResetPassword />} /> {/* 비밀번호 변경 */}
-                <Route path="/my-courses" element={<MyCourses />} />
-                <Route path="/inquiries" element={<InquiryList/>}/>
-                <Route path="/inquiries/new" element={<InquiryRegistration/>}/>
-                <Route path="/inquiries/:inquiryId" element={<InquiryDetail/>}/>
-                <Route path="/members/:memberId" element={<MemberDetail />} />
-                <Route path="/members/other/:nickname" element={<OtherUserPage/>}/>
-                <Route path="/alarm/send" element={<SendNotificationComponent />} />
-                <Route path="/alarm/display" element={<NotificationDisplay/>}/>
-                <Route path="/chat" element={<Chat/>}/>
-                <Route path="/alarm/*" element={<AlarmRoutes />}/>
-                <Route path="/admin/*" element={<AdminDashboard />} />
-            </Routes>
-        </Router>
+            <Router>
+                <AttendanceCheck/>
+                <Header openModal={openModal}/>
+                {isModalOpen && <LoginModal closeModal={closeModal}/>}
+                <Routes>
+                    <Route path="/" element={<Navigate to="/courses"/>}/>
+                    <Route path="/signup" element={<SignUp/>}/>
+                    <Route path="/courses" element={<Courses/>}/> {/* 수정된 경로 */}
+                    <Route path="/courses/:courseId/post" element={<PostCourseInquiry/>}/>
+                    <Route path="/courses/:courseId/news/:newsId" element={<CourseNews/>}/>
+                    <Route path="/내정보" element={<MyPage/>}/>
+                    <Route path="/courses/:courseId/news/create" element={<CreateNews/>}/>
+                    <Route path="/courses/:courseId/news/:newsId/edit" element={<UpdateNews/>}/>
+                    <Route path="/edit-profile" element={<EditProfile/>}/>
+                    <Route path="/courses/:courseId/reviews/create" element={<CourseReviewCreate/>}/>
+                    <Route path="/courses/:courseId/reviews/:reviewId" element={<CourseReviewEdit/>}/>
+                    <Route path="/members/instructor/:nickname" element={<Instructor/>}/>
+                    <Route path="/members/instructor/:nickname/reviews/create" element={<InstructorReviewCreate/>}/>
+                    <Route path="/members/instructor/:nickname/reviews/:reviewId" element={<InstructorReviewEdit/>}/>
+                    <Route path="/video/:videoId/play" element={<YoutubePlayer/>}/> {/* 추가된 부분 */}
+                    <Route path="/*" element={<CourseRoutes/>}/> {/* 모든 하위 경로를 CourseRoutes로 전달 */}
+                    <Route path="/orders/*" element={<OrderRoutes/>}/>
+                    <Route path="/video/*" element={<VideoRoutes/>}/> {/* 비디오 관련 라우팅 추가 */}
+                    <Route path="/members/instructor/:nickname/reviews/create"
+                           element={<InstructorReviewCreate/>}/> {/* 강사 리뷰 생성 페이지 */}
+                    <Route path="/members/instructor/:nickname/reviews/:reviewId"
+                           element={<InstructorReviewEdit/>}/> {/* 강사 리뷰 수정 페이지 */}
+                    <Route path="/reset-password/:uuid" element={<ResetPassword/>}/> {/* 비밀번호 변경 */}
+                    <Route path="/my-courses" element={<MyCourses/>}/>
+                    <Route path="/inquiries" element={<InquiryList/>}/>
+                    <Route path="/inquiries/new" element={<InquiryRegistration/>}/>
+                    <Route path="/inquiries/:inquiryId" element={<InquiryDetail/>}/>
+                    <Route path="/members/:memberId" element={<MemberDetail/>}/>
+                    <Route path="/members/other/:nickname" element={<OtherUserPage/>}/>
+                    <Route path="/alarm/send" element={<SendNotificationComponent/>}/>
+                    <Route path="/alarm/display" element={<NotificationDisplay/>}/>
+                    <Route path="/chat" element={<Chat/>}/>
+                    <Route path="/alarm/*" element={<AlarmRoutes/>}/>
+                    <Route path="/admin/*" element={<AdminDashboard/>}/>
+                </Routes>
+            </Router>
         </NotificationProvider>
     );
 }

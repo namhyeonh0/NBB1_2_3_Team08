@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {useNavigate, useParams} from "react-router-dom";
 import axios from "../axiosInstance";
-import styled from "styled-components";
 import axiosInstance from "../axiosInstance";
+import styled from "styled-components";
 
 const OrderDetail = () => {
-    const { orderId } = useParams();
+    const {orderId} = useParams();
     const [order, setOrder] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -39,7 +39,7 @@ const OrderDetail = () => {
         const fetchOrderDetail = async () => {
             setLoading(true);
             try {
-                const response = await axios.get(`http://localhost:8080/order/${orderId}`,{ withCredentials: true});
+                const response = await axios.get(`http://localhost:8080/order/${orderId}`, {withCredentials: true});
                 setOrder(response.data);
             } catch (error) {
                 console.error("주문 세부정보를 가져오는 중 오류 발생:", error);

@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { useNotification } from "./NotificationContext";
+import React, {useState} from "react";
+import {useNotification} from "./NotificationContext";
 
 const SendNotificationComponent = () => {
-    const { setNotifications } = useNotification();
+    const {setNotifications} = useNotification();
     const [title, setTitle] = useState("");
     const [message, setMessage] = useState("");
 
@@ -23,12 +23,12 @@ const SendNotificationComponent = () => {
 
             if (!response.ok) {
                 throw new Error("Failed to send notification");
-            }else {
+            } else {
                 console.log("response", response);
             }
 
             // 전송한 알림을 UI에 즉시 반영
-            setNotifications(prev => [...prev, { title, message }]);
+            setNotifications(prev => [...prev, {title, message}]);
             setTitle("");
             setMessage("");
         } catch (error) {

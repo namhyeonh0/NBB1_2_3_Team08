@@ -6,7 +6,7 @@ const CourseReview = ({courseId}) => {
     const navigate = useNavigate();
     const [reviewList, setReviewList] = useState([]);
     const [userNickname, setUserNickname] = useState('');
-    const [userId, setUserId] = useState('');
+    const [userId] = useState('');
     const [writerId, setWriterId] = useState(null);
 
     useEffect(() => {

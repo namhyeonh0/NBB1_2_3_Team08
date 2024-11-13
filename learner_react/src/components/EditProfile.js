@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 import axiosInstance from '../pages/axiosInstance';
 
@@ -21,7 +21,7 @@ const EditProfile = () => {
         const fetchUserData = async () => {
             try {
                 const response = await axiosInstance.get('/token/decode');
-                const { mid } = response.data;
+                const {mid} = response.data;
                 setMid(mid);
 
                 if (!mid) {
@@ -51,7 +51,7 @@ const EditProfile = () => {
 
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
+        const {name, value} = e.target;
         setUserInfo((prevUserInfo) => ({
             ...prevUserInfo,
             [name]: value,
@@ -138,7 +138,7 @@ const EditProfile = () => {
             <Form onSubmit={handleSubmit}>
                 <Label>
                     닉네임:
-                    <Input type="text" name="nickname" value={userInfo.nickname} onChange={handleChange} required />
+                    <Input type="text" name="nickname" value={userInfo.nickname} onChange={handleChange} required/>
                 </Label>
                 <Label>
                     이메일:
@@ -151,7 +151,7 @@ const EditProfile = () => {
                 </Label>
                 <Label>
                     자기소개:
-                    <Textarea name="introduction" value={userInfo.introduction} onChange={handleChange} />
+                    <Textarea name="introduction" value={userInfo.introduction} onChange={handleChange}/>
                 </Label>
                 {!isOAuthUser && (
                     <>
@@ -232,6 +232,7 @@ const Button = styled.button`
     padding: 0.5rem 1rem;
     cursor: pointer;
     font-size: 1.2rem;
+
     &:hover {
         background-color: #218838;
     }
@@ -246,6 +247,7 @@ const VerifyButton = styled.button`
     cursor: pointer;
     font-size: 1.2rem;
     margin-top: 0.5rem;
+
     &:hover {
         background-color: #0056b3;
     }

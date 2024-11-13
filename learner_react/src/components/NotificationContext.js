@@ -1,9 +1,9 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, {createContext, useContext, useEffect, useState} from "react";
 import axiosInstance from "../pages/axiosInstance";
 
 const NotificationContext = createContext();
 
-export const NotificationProvider = ({ children }) => {
+export const NotificationProvider = ({children}) => {
     const [notifications, setNotifications] = useState([]);
     const [memberId, setMemberId] = useState(null);
 
@@ -86,7 +86,7 @@ export const NotificationProvider = ({ children }) => {
     }, [memberId]);
 
     return (
-        <NotificationContext.Provider value={{ notifications, setNotifications }}>
+        <NotificationContext.Provider value={{notifications, setNotifications}}>
             {children}
         </NotificationContext.Provider>
     );

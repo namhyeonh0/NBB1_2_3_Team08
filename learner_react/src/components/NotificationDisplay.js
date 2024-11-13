@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import { useNotification } from "./NotificationContext";
+import React, {useEffect} from "react";
+import {useNotification} from "./NotificationContext";
 
 const NotificationDisplay = () => {
-    const { notifications } = useNotification();
+    const {notifications} = useNotification();
 
     useEffect(() => {
         console.log("현재 알림:", notifications); // 상태 확인

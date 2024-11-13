@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import axiosInstance from "../axiosInstance";
 
 const CourseManagement = () => {
@@ -21,11 +21,11 @@ const CourseManagement = () => {
                 setCourses(camelCasedData);
                 return fetchUserRoleAndId()
             }).then((userData) => {
-                setUserRole(userData.role);   // 사용자 역할 설정
-                setUserId(userData.mid);      // 사용자 ID 설정
-                //console.log(userData.role);
-                //console.log(userData.mid);
-            })
+            setUserRole(userData.role);   // 사용자 역할 설정
+            setUserId(userData.mid);      // 사용자 ID 설정
+            //console.log(userData.role);
+            //console.log(userData.mid);
+        })
             .catch((error) => {
                 console.error("Error fetching the courses:", error);
             });
@@ -112,7 +112,7 @@ const CourseManagement = () => {
                             <CourseInfo>
                                 <h3
                                     onClick={() => navigate(`/courses/${course.courseId}`)}
-                                    style={{ cursor: 'pointer', color: 'blue' }}
+                                    style={{cursor: 'pointer', color: 'blue'}}
                                 >   {course.courseName}
                                 </h3>
                                 <p>강사명: {course.memberNickname}</p>
@@ -120,8 +120,11 @@ const CourseManagement = () => {
                             </CourseInfo>
                             <ButtonContainer>
                                 <EditButton onClick={() => handleEdit(course.courseId)}>강좌 수정</EditButton>
-                                <CourseButton onClick={() => navigate(`/video/${course.courseId}`)}>비디오 보기</CourseButton>
-                                <InquiryButton onClick={() => {handleInquiryManagement(course.courseId)}}>문의 관리</InquiryButton>
+                                <CourseButton onClick={() => navigate(`/video/${course.courseId}`)}>비디오
+                                    보기</CourseButton>
+                                <InquiryButton onClick={() => {
+                                    handleInquiryManagement(course.courseId)
+                                }}>문의 관리</InquiryButton>
                                 <NewsButton onClick={() => handleNewsManagement(course.courseId)}>새소식 관리</NewsButton>
                                 <DeleteButton onClick={() => handleDelete(course.courseId)}>삭제</DeleteButton>
                             </ButtonContainer>

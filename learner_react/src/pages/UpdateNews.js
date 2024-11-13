@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {useNavigate, useParams} from "react-router-dom";
 import axiosInstance from './axiosInstance';
 
 const UpdateNews = () => {
-    const { courseId, newsId } = useParams();
+    const {courseId, newsId} = useParams();
     const [newsName, setNewsName] = useState("");
     const [newsDescription, setNewsDescription] = useState("");
     const navigate = useNavigate();

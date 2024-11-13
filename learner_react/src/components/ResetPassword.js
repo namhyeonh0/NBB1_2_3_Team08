@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom'; // useNavigate 추가
+import React, {useState} from 'react';
+import {useNavigate, useParams} from 'react-router-dom'; // useNavigate 추가
 
 const ResetPassword = () => {
-    const { uuid } = useParams();
+    const {uuid} = useParams();
     const navigate = useNavigate(); // useNavigate 훅 사용
     const [newPassword, setNewPassword] = useState('');
     const [message, setMessage] = useState('');
@@ -16,7 +16,7 @@ const ResetPassword = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ newPassword }),
+                body: JSON.stringify({newPassword}),
             });
 
             if (response.ok) {
@@ -50,7 +50,7 @@ const ResetPassword = () => {
                 />
                 <button type="submit">비밀번호 재설정</button>
             </form>
-            {message && <p style={{ color: isSuccess ? 'green' : 'red' }}>{message}</p>}
+            {message && <p style={{color: isSuccess ? 'green' : 'red'}}>{message}</p>}
         </div>
     );
 };

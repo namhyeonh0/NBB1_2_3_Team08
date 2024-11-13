@@ -1,15 +1,15 @@
 // PostCourseInquiry.js
-import React, { useState, useEffect } from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
 import styled from "styled-components";
-import { useParams, useNavigate } from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import axiosInstance from "./axiosInstance";
 
 const PostCourseInquiry = () => {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
-    const { courseId } = useParams(); // courseId를 URL에서 가져오기
-    const [userRole, setUserRole] = useState(null); // 사용자 역할 저장
+    const {courseId} = useParams(); // courseId를 URL에서 가져오기
+    const [setUserRole] = useState(null); // 사용자 역할 저장
     const [userId, setUserId] = useState(null); // 사용자 ID 저장
     const navigate = useNavigate(); // 성공적으로 문의 등록 후 다시 목록으로 이동
 
@@ -86,12 +86,12 @@ const PostCourseInquiry = () => {
             inquiryTitle: title,  // 제목이 비어있거나 null이 아닌지 확인
             inquiryContent: content,  // 내용이 비어있지 않은지 확인
             inquiryStatus: "PENDING"  // 상태가 올바르게 설정되었는지 확인
-            }, {
-                withCredentials: true,
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem('accessToken')}`
-                }
-            })
+        }, {
+            withCredentials: true,
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then((response) => {
                 console.log("문의 등록 성공:", response.data);
                 navigate(`/courses/${courseId}`);
@@ -101,8 +101,6 @@ const PostCourseInquiry = () => {
                 console.error("문의 등록 실패:", error);
             });
     };
-
-
 
 
     return (
@@ -179,6 +177,7 @@ const CancelButton = styled.button`
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
+
     &:hover {
         background-color: #bbb;
     }
@@ -192,6 +191,7 @@ const SubmitButton = styled.button`
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
+
     &:hover {
         background-color: #2a9d63;
     }

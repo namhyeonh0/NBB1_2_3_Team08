@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {useNavigate, useParams} from "react-router-dom";
 import styled from "styled-components";
 import axiosInstance from "../axiosInstance"; // axios 직접 import
 
 const CourseReviewCreate = () => {
-    const { courseId } = useParams();
+    const {courseId} = useParams();
     const navigate = useNavigate();
     const [writerId, setWriterId] = useState(null);
-    const [memberId] = useState(1); // 예시로 하드코딩된 memberId
     const [reviewName, setReviewName] = useState("");
     const [reviewDetail, setReviewDetail] = useState("");
     const [rating, setRating] = useState(1);
@@ -17,7 +16,7 @@ const CourseReviewCreate = () => {
         // /token/decode API 호출로 mid 가져오기
         axiosInstance.get('/token/decode')
             .then(response => {
-                const { mid } = response.data;
+                const {mid} = response.data;
                 setWriterId(mid);
             })
             .catch(error => {
@@ -144,6 +143,7 @@ const Input = styled.input`
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 1rem;
+
     &:focus {
         border-color: #3cb371; /* 포커스 시 색상 변경 */
         outline: none; /* 포커스 아웃라인 제거 */
@@ -157,6 +157,7 @@ const TextArea = styled.textarea`
     font-size: 1rem;
     height: 150px; /* 높이를 적절히 조정 */
     resize: none; /* 크기 조절 비활성화 */
+
     &:focus {
         border-color: #3cb371; /* 포커스 시 색상 변경 */
         outline: none; /* 포커스 아웃라인 제거 */
@@ -184,6 +185,7 @@ const SubmitButton = styled.button`
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
+
     &:hover {
         background-color: #2a9d63;
     }
@@ -197,6 +199,7 @@ const CancelButton = styled.button`
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
+
     &:hover {
         background-color: #bbb;
     }

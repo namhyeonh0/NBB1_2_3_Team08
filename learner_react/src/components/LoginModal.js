@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 import FindEmail from "./FindEmail";
 import PasswordSendEmail from "./PasswordSendEmail";
 
-const LoginModal = ({ closeModal }) => {
+const LoginModal = ({closeModal}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showFindEmail, setShowFindEmail] = useState(false);
@@ -27,7 +27,7 @@ const LoginModal = ({ closeModal }) => {
             });
 
             if (response.ok) {
-                const { memberId, accessToken } = await response.json();
+                const {memberId, accessToken} = await response.json();
                 console.log("로그인 성공, memberId:", memberId);
                 localStorage.setItem("memberId", memberId);
                 localStorage.setItem("accessToken", accessToken);
@@ -90,21 +90,21 @@ const LoginModal = ({ closeModal }) => {
 
                     <SocialLoginContainer>
                         <SocialLoginButton onClick={handleGoogleClick}>
-                            <Icon src="http://localhost:8080/images/google_login.png" alt="Google Logo" />
+                            <Icon src="http://localhost:8080/images/google_login.png" alt="Google Logo"/>
                         </SocialLoginButton>
                         <SocialLoginButton onClick={handleNaverClick}>
-                            <Icon src="http://localhost:8080/images/naver_login.png" alt="Naver Logo" />
+                            <Icon src="http://localhost:8080/images/naver_login.png" alt="Naver Logo"/>
                         </SocialLoginButton>
                     </SocialLoginContainer>
                 </ModalContainer>
             </ModalBackground>
 
             {showFindEmail && (
-                <FindEmail closeModal={() => setShowFindEmail(false)} />
+                <FindEmail closeModal={() => setShowFindEmail(false)}/>
             )}
 
             {showResetPassword && (
-                <PasswordSendEmail closeModal={() => setShowResetPassword(false)} />
+                <PasswordSendEmail closeModal={() => setShowResetPassword(false)}/>
             )}
         </>
     );

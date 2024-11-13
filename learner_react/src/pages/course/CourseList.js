@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {Link, useNavigate} from "react-router-dom";
 import styled from "styled-components";
 import axiosInstance from "../axiosInstance";
 
@@ -41,17 +41,17 @@ const CourseList = () => {
 
     useEffect(() => {
         const fetchCourses = async () => {
-                setLoading(true);
-                try {
-                    console.log("닉네임 확인 :", memberNickname);
-                    const response = await axiosInstance.get(`/course/instructor/list/${memberNickname}`, { withCredentials: true });
-                    setCourses(response.data);
-                } catch (error) {
-                    console.error("강좌 목록 가져오는 중 오류 발생:", error);
-                    setError("강좌 목록을 가져오는 데 실패했습니다.");
-                } finally {
-                    setLoading(false);
-                }
+            setLoading(true);
+            try {
+                console.log("닉네임 확인 :", memberNickname);
+                const response = await axiosInstance.get(`/course/instructor/list/${memberNickname}`, {withCredentials: true});
+                setCourses(response.data);
+            } catch (error) {
+                console.error("강좌 목록 가져오는 중 오류 발생:", error);
+                setError("강좌 목록을 가져오는 데 실패했습니다.");
+            } finally {
+                setLoading(false);
+            }
         };
 
         fetchCourses(); // 강좌 목록 가져오기
@@ -68,7 +68,7 @@ const CourseList = () => {
     const handleDeleteClick = async (courseId) => {
         if (window.confirm("정말로 이 강좌를 삭제하시겠습니까?")) {
             try {
-                await axiosInstance.delete(`/course/${courseId}`, { withCredentials: true });
+                await axiosInstance.delete(`/course/${courseId}`, {withCredentials: true});
                 console.log("삭제")
                 setCourses(courses.filter(course => course.courseId !== courseId));
             } catch (error) {
@@ -112,7 +112,8 @@ const CourseList = () => {
                             <StyledButton onClick={() => handleUpdateClick(course.courseId)} secondary>수정</StyledButton>
                             <StyledButton onClick={() => handleDeleteClick(course.courseId)} delete>삭제</StyledButton>
                             <StyledButton onClick={() => handleCourseDetailClick(course.courseId)}>상세정보</StyledButton>
-                            <StyledButton onClick={() => handleVideoEditClick(course.courseId)} secondary>비디오 수정</StyledButton>
+                            <StyledButton onClick={() => handleVideoEditClick(course.courseId)} secondary>비디오
+                                수정</StyledButton>
                         </ButtonContainer>
                     </CourseItem>
                 ))

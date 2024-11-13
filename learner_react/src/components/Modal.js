@@ -24,6 +24,7 @@ const Modal = ({ title, children, onClose }) => {
                     justify-content: center;
                     z-index: 1000;
                 }
+
                 .modal-content {
                     background: #fff;
                     padding: 20px;
@@ -33,6 +34,7 @@ const Modal = ({ title, children, onClose }) => {
                     overflow-y: auto;
                     position: relative;
                 }
+
                 .close-button {
                     position: absolute;
                     top: 10px;
@@ -43,6 +45,7 @@ const Modal = ({ title, children, onClose }) => {
                     font-size: 16px;
                     color: #555;
                 }
+
                 .modal-body {
                     margin-top: 20px;
                 }

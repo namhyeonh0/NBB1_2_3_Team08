@@ -16,10 +16,10 @@ const Home = () => {
 export default Home;
 
 const Container = styled.div`
-  text-align: center;
+    text-align: center;
 `;
 
 const IntroSection = styled.div`
-  background-color: #d8f8ff;
-  padding: 2rem;
+    background-color: #d8f8ff;
+    padding: 2rem;
 `;

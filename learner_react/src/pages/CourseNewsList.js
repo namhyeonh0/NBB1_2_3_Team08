@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {Link, useNavigate} from "react-router-dom";
 import axiosInstance from './axiosInstance'; // axiosInstance import
 
-const CourseNewsList = ({ courseId }) => {
+const CourseNewsList = ({courseId}) => {
     const [newsList, setNewsList] = useState([]);
     const [currentPage, setCurrentPage] = useState(0);
     const [totalPages, setTotalPages] = useState(0);

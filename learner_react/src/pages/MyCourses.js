@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 import axiosInstance from "./axiosInstance";
 
 const MyCourses = () => {
@@ -38,7 +38,7 @@ const MyCourses = () => {
         if (memberId) {
             const fetchCourses = async () => {
                 try {
-                    const response = await axiosInstance.get(`/course/${memberId}/list`, { withCredentials: true });
+                    const response = await axiosInstance.get(`/course/${memberId}/list`, {withCredentials: true});
                     setCourses(response.data);
                     console.log(response.data); // 받아온 강좌 데이터 확인
                 } catch (error) {
@@ -63,8 +63,11 @@ const MyCourses = () => {
                             <div onClick={() => handleCourseClick(course.courseId)} style={styles.courseLink}>
                                 <div>
                                     <span style={styles.courseName}>{course.courseName}</span>
-                                    <p style={styles.instructor}>강사: <span style={styles.instructorName}>{course.instructor}</span></p>
-                                    <p style={styles.purchaseDate}>구매일: <span style={styles.purchaseDateText}>{new Date(course.purchaseDate).toLocaleDateString()}</span></p>
+                                    <p style={styles.instructor}>강사: <span
+                                        style={styles.instructorName}>{course.instructor}</span></p>
+                                    <p style={styles.purchaseDate}>구매일: <span
+                                        style={styles.purchaseDateText}>{new Date(course.purchaseDate).toLocaleDateString()}</span>
+                                    </p>
                                 </div>
                                 <span style={styles.courseArrow}>→</span>
                             </div>

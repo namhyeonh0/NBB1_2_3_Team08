@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, {useEffect, useState} from "react";
 import axios from "../axiosInstance";
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
 import axiosInstance from "../axiosInstance"; // axiosInstance import 추가
+import {useNavigate} from "react-router-dom";
+import styled from "styled-components";
 
 const Course_Url = "http://localhost:8080/course";
 
@@ -60,7 +60,7 @@ const CourseCreate = () => {
                 memberNickname, // memberNickname 사용
             };
 
-            await axios.post(Course_Url, payload, { withCredentials: true });
+            await axios.post(Course_Url, payload, {withCredentials: true});
 
             // 성공 메시지와 페이지 리디렉션
             alert("강의 생성에 성공하였습니다.");

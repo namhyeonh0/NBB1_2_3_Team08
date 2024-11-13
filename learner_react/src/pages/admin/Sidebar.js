@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, {useState} from 'react';
+import {Link, useLocation} from 'react-router-dom';
 
 function Sidebar() {
     const location = useLocation();
@@ -10,10 +10,10 @@ function Sidebar() {
     };
 
     const menuItems = [
-        { path: "/admin/courses/create", label: "강좌 등록" },
-        { path: "/admin/courses-management", label: "강좌 관리" },
-        { path: "/admin/inquiries", label: "문의 관리" },
-        { path: "/admin/members", label: "회원 관리" },
+        {path: "/admin/courses/create", label: "강좌 등록"},
+        {path: "/admin/courses-management", label: "강좌 관리"},
+        {path: "/admin/inquiries", label: "문의 관리"},
+        {path: "/admin/members", label: "회원 관리"},
     ];
 
     return (
@@ -24,7 +24,7 @@ function Sidebar() {
                     <li key={item.path}>
                         <Link
                             to={item.path}
-                            style={{ ...linkStyle, color: selectedMenu === item.path ? '#007bff' : 'black' }}
+                            style={{...linkStyle, color: selectedMenu === item.path ? '#007bff' : 'black'}}
                             onClick={() => handleMenuClick(item.path)}
                         >
                             {item.label}

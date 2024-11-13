@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {useNavigate, useParams} from "react-router-dom";
 import axios from "../axiosInstance";
 import styled from "styled-components";
 
 const OrderDelete = () => {
-    const { orderId } = useParams();
+    const {orderId} = useParams();
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
@@ -12,7 +12,7 @@ const OrderDelete = () => {
     useEffect(() => {
         const deleteOrder = async () => {
             try {
-                await axios.delete(`http://localhost:8080/order/${orderId}`,{ withCredentials: true});
+                await axios.delete(`http://localhost:8080/order/${orderId}`, {withCredentials: true});
                 alert("주문이 삭제되었습니다.");
                 navigate("/orders"); // 주문 목록 페이지로 리디렉션
             } catch (error) {

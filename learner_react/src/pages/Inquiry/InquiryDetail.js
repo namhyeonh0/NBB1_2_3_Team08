@@ -16,7 +16,7 @@ const InquiryDetail = () => {
     const [inquiryAuthorId, setInquiryAuthorId] = useState(null); // 작성자 ID 추가
     const navigate = useNavigate();
     const [memberId, setMemberId] = useState(null);
-    const [inquiryStatus, setInquiryStatus] = useState('ANSWERED');
+    const [inquiryStatus] = useState('ANSWERED');
 
     // role 가져오는 함수
     const getInfoFromToken = async () => {
@@ -249,7 +249,7 @@ const InquiryDetail = () => {
                             value={answerContent}
                             onChange={(e) => setAnswerContent(e.target.value)}
                             placeholder="답변을 작성하세요"
-                            required = {true}
+                            required={true}
                         />
                         <button onClick={handleAnswerSave} disabled={isButtonDisabled2}>등록</button>
                         <button onClick={() => setIsAnswerCreating(false)}>취소</button>

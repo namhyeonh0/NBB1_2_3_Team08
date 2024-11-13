@@ -1,5 +1,4 @@
 import axios from "../axiosInstance";
-import Cookies from "js-cookie"; // 쿠키 관리 라이브러리 추가
 
 const extractVideoId = (url) => {
     const regex = /[?&]v=([^&#]*)/;
@@ -29,7 +28,7 @@ export const handlePlayClick = async (courseId, video, navigate, setError) => {
 
         // 토큰 디코딩하여 role과 memberId 가져오기
         const response = await axios.get('/token/decode');
-        const { role, mid, username } = response.data;
+        const {role, mid, username} = response.data;
 
         // USER 역할일 경우 구매 여부 확인
         if (role === "ROLE_USER") {

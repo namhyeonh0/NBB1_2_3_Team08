@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {useNavigate, useParams} from "react-router-dom";
 import axios from "../axiosInstance";
 import styled from "styled-components";
 
 const OrderUpdate = () => {
-    const { orderId } = useParams();
+    const {orderId} = useParams();
     const [order, setOrder] = useState(null);
     const [courses, setCourses] = useState([]);
     const [selectedCourseId, setSelectedCourseId] = useState(""); // 선택된 강의 ID 상태
@@ -14,7 +14,7 @@ const OrderUpdate = () => {
     useEffect(() => {
         const fetchOrder = async () => {
             try {
-                const response = await axios.get(`http://localhost:8080/order/${orderId}`,{ withCredentials: true });
+                const response = await axios.get(`http://localhost:8080/order/${orderId}`, {withCredentials: true});
                 setOrder(response.data);
             } catch (error) {
                 console.error("주문 정보를 가져오는 중 오류 발생:", error);
@@ -24,7 +24,7 @@ const OrderUpdate = () => {
 
         const fetchCourses = async () => {
             try {
-                const response = await axios.get('http://localhost:8080/course/list',{ withCredentials: true });
+                const response = await axios.get('http://localhost:8080/course/list', {withCredentials: true});
                 setCourses(response.data);
             } catch (error) {
                 console.error("강의 목록을 가져오는 중 오류 발생:", error);
@@ -59,7 +59,10 @@ const OrderUpdate = () => {
                 return; // 이미 존재하는 경우 추가하지 않음
             }
 
-            const updatedOrderItems = [...order.orderItemDTOList, { courseId: course.courseId, price: course.coursePrice }];
+            const updatedOrderItems = [...order.orderItemDTOList, {
+                courseId: course.courseId,
+                price: course.coursePrice
+            }];
             const newTotalPrice = updatedOrderItems.reduce((total, item) => total + item.price, 0);
 
             console.log("업데이트된 아이템 목록:", updatedOrderItems); // 업데이트된 목록 로그
@@ -79,13 +82,13 @@ const OrderUpdate = () => {
     const handleRemoveCourse = (courseId) => {
         const updatedOrderItems = order.orderItemDTOList.filter(item => item.courseId !== courseId);
         const newTotalPrice = updatedOrderItems.reduce((total, item) => total + item.price, 0);
-        setOrder((prev) => ({ ...prev, orderItemDTOList: updatedOrderItems, totalPrice: newTotalPrice }));
+        setOrder((prev) => ({...prev, orderItemDTOList: updatedOrderItems, totalPrice: newTotalPrice}));
     };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.put(`http://localhost:8080/order/${orderId}`, order,{ withCredentials: true});
+            const response = await axios.put(`http://localhost:8080/order/${orderId}`, order, {withCredentials: true});
             console.log("주문 업데이트 완료:", response.data);
             navigate(`/orders/${orderId}`);
         } catch (error) {
@@ -95,7 +98,7 @@ const OrderUpdate = () => {
     };
 
     if (!order) return <p>로딩 중...</p>;
-    if (error) return <p style={{ color: "red" }}>{error}</p>;
+    if (error) return <p style={{color: "red"}}>{error}</p>;
 
     return (
         <OrderUpdateContainer>

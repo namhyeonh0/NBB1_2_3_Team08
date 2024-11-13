@@ -29,7 +29,7 @@ axiosInstance.interceptors.response.use(
 
 
                 if (response.status === 200) {
-                    const { accessToken } = response.data;
+                    const {accessToken} = response.data;
                     localStorage.setItem('accessToken', accessToken);
                     return axiosInstance(error.config);
                 }

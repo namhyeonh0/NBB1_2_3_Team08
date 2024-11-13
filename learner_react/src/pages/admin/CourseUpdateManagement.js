@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import styled from "styled-components";
 
 const Course_Url = "http://localhost:8080/course";
 
 const CourseUpdateManagement = () => {
-    const { courseId } = useParams();
+    const {courseId} = useParams();
     const [courseName, setCourseName] = useState("");
     const [courseLevel, setCourseLevel] = useState("1"); // 초기값을 1로 설정
     const [coursePrice, setCoursePrice] = useState("");
@@ -20,8 +20,8 @@ const CourseUpdateManagement = () => {
     useEffect(() => {
         const fetchCourse = async () => {
             try {
-                const response = await axios.get(`${Course_Url}/${courseId}`, { withCredentials: true });
-                const { courseName, courseLevel, coursePrice, courseDescription, memberNickname } = response.data;
+                const response = await axios.get(`${Course_Url}/${courseId}`, {withCredentials: true});
+                const {courseName, courseLevel, coursePrice, courseDescription, memberNickname} = response.data;
                 setCourseName(courseName);
                 setCourseLevel(courseLevel);
                 setCoursePrice(coursePrice);
@@ -69,7 +69,7 @@ const CourseUpdateManagement = () => {
             <form onSubmit={handleSubmit}>
                 <Label>
                     강좌 이름:
-                    <Input type="text" value={courseName} onChange={(e) => setCourseName(e.target.value)} required />
+                    <Input type="text" value={courseName} onChange={(e) => setCourseName(e.target.value)} required/>
                 </Label>
                 <Label>
                     강좌 레벨:
@@ -83,15 +83,17 @@ const CourseUpdateManagement = () => {
                 </Label>
                 <Label>
                     강좌 가격:
-                    <Input type="number" value={coursePrice} onChange={(e) => setCoursePrice(e.target.value)} required />
+                    <Input type="number" value={coursePrice} onChange={(e) => setCoursePrice(e.target.value)} required/>
                 </Label>
                 <Label>
                     강좌 설명:
-                    <Input type="text" value={courseDescription} onChange={(e) => setCourseDescription(e.target.value)} required />
+                    <Input type="text" value={courseDescription} onChange={(e) => setCourseDescription(e.target.value)}
+                           required/>
                 </Label>
                 <Label>
                     강좌 과목:
-                    <Input type="text" value={courseAttribute} onChange={(e) => setCourseAttribute(e.target.value)} required />
+                    <Input type="text" value={courseAttribute} onChange={(e) => setCourseAttribute(e.target.value)}
+                           required/>
                 </Label>
                 <Button type="submit">수정</Button>
             </form>

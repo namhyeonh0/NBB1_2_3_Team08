@@ -8,23 +8,23 @@ import InquiryList from "../Inquiry/InquiryList";
 import CourseUpdate from './CourseUpdateManagement';
 import MemberList from './MemberListManagement';
 
-import { Routes, Route } from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
 
 function AdminDashboard() {
     return (
         <div style={adminDashboardStyle}>
             <div style={sidebarStyle}>
-                <Sidebar />
+                <Sidebar/>
             </div>
             <main style={mainContentStyle}>
                 <Routes>
-                    <Route path="courses-management" element={<CourseManagement />} />
-                    <Route path="courses/create" element={<CourseCreate />} />
-                    <Route path="courses/edit/:courseId" element={<CourseUpdate />} />
-                    <Route path="courses/inquiries/:courseId" element={<CourseInquiryList/>} />
-                    <Route path="courses/news/:courseId" element={<CourseNewsList/>} />
-                    <Route path="inquiries" element={<InquiryList/>} />
-                    <Route path="members" element={<MemberList/>} />
+                    <Route path="courses-management" element={<CourseManagement/>}/>
+                    <Route path="courses/create" element={<CourseCreate/>}/>
+                    <Route path="courses/edit/:courseId" element={<CourseUpdate/>}/>
+                    <Route path="courses/inquiries/:courseId" element={<CourseInquiryList/>}/>
+                    <Route path="courses/news/:courseId" element={<CourseNewsList/>}/>
+                    <Route path="inquiries" element={<InquiryList/>}/>
+                    <Route path="members" element={<MemberList/>}/>
                 </Routes>
             </main>
         </div>
