@@ -35,7 +35,7 @@ const Header = ({openModal}) => {
         const intervalId = setInterval(checkLoginStatus, 60000); // 1분마다 로그인 상태 체크
 
         return () => clearInterval(intervalId); // 컴포넌트 언마운트 시 interval 정리
-    }, []);
+    });
 
     const handleLogout = () => {
         try {
@@ -66,7 +66,6 @@ const Header = ({openModal}) => {
         }
     };
 
-    const isCoursesPage = location.pathname === "/courses";
     const isCourseDetailPage = location.pathname.startsWith("/courses/");
 
     return (

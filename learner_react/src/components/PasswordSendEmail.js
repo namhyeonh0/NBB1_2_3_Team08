@@ -137,22 +137,3 @@ const MessageContainer = styled.div`
     background-color: ${props => props.isSuccess ? '#d4edda' : '#f8d7da'};
     color: ${props => props.isSuccess ? '#155724' : '#721c24'};
 `;
-
-const ResultContainer = styled.div`
-    margin-top: 1rem;
-    padding: 1rem;
-    background-color: #f8f9fa;
-    border-radius: 5px;
-`;
-
-const ResultTitle = styled.h3`
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-    color: #333;
-`;
-
-const ResultText = styled.p`
-    font-size: 1rem;
-    color: #28a745;
-    margin: 0.25rem 0;
-`;

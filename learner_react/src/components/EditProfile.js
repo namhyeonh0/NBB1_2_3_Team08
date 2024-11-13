@@ -15,7 +15,7 @@ const EditProfile = () => {
     const [successMessage, setSuccessMessage] = useState("");
     const [currentPassword, setCurrentPassword] = useState("");
     const [isPasswordVerified, setIsPasswordVerified] = useState(false);
-    const [mid, setMid] = useState(null);
+    const [setMid] = useState(null);
 
     useEffect(() => {
         const fetchUserData = async () => {

@@ -8,8 +8,7 @@ const YoutubePlayer = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const playerRef = useRef(null);
-    const [totalDuration, setTotalDuration] = useState(0);
-    const [currentTime, setCurrentTime] = useState(0);
+    const [setTotalDuration] = useState(0);
     const [courseVideos, setCourseVideos] = useState([]);
     const [currentVideoIndex, setCurrentVideoIndex] = useState(-1);
     const [isLoading, setIsLoading] = useState(true);

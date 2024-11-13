@@ -65,7 +65,7 @@ const Chat = () => {
 
     const onConnected = () => {
         try {
-            const subscription = stompClient.current.subscribe('/sub/chat', onMessageReceived);
+            stompClient.current.subscribe('/sub/chat', onMessageReceived);
 
             // 페이지 새로고침 여부 확인
             const isRefresh = performance.navigation.type === performance.navigation.TYPE_RELOAD;
@@ -133,7 +133,7 @@ const Chat = () => {
                 localStorage.setItem('chatMessages', JSON.stringify(messages));
             }
         };
-    }, []);
+    });
 
     useEffect(() => {
         if (messageAreaRef.current) {

@@ -26,7 +26,7 @@ import InquiryDetail from "./pages/Inquiry/InquiryDetail";
 import InquiryRegistration from "./pages/Inquiry/InquiryRegistration";
 import MemberDetail from './pages/MemberDetail';
 import OtherUserPage from "./pages/OtherUserPage";
-import {NotificationContext, NotificationProvider} from "./components/NotificationContext";
+import {NotificationProvider} from "./components/NotificationContext";
 import SendNotificationComponent from "./components/SendNotification"; // 컴포넌트 가져오기
 import NotificationDisplay from "./components/NotificationDisplay";
 import axios from "axios";
