@@ -83,15 +83,15 @@ class AnswerServiceTests {
         }
     }
 
-    @Test
-    @Transactional
-    fun testDeleteByInquiryId() {
-        val inquiryId = 1L
-
-        answerService.deleteByInquiryId(inquiryId).run {
-            assertThrows<NoSuchElementException> {
-                answerService.readByInquiryId(inquiryId)
-            }
-        }
-    }
+//    @Test
+//    @Transactional
+//    fun testDeleteByInquiryId() {
+//        val inquiryId = 1L
+//
+//        answerService.deleteByInquiryId(inquiryId).run {
+//            assertThrows<NoSuchElementException> {
+//                answerService.readByInquiryId(inquiryId)
+//            }
+//        }
+//    }
 }

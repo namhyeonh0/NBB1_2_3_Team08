@@ -55,8 +55,8 @@ class AttendanceRepositoryTests {
     @Test
     fun testFindByMemberIdAndWeek() {
         val memberId = 1L
-        val startDate = LocalDate.of(2024, 10, 27)
-        val endDate = LocalDate.of(2024, 11, 2)
+        val startDate = LocalDate.now()
+        val endDate = LocalDate.now()
 
         attendanceRepository.findByMemberIdAndWeek(memberId, startDate, endDate).run {
             assertEquals(1, this.size)

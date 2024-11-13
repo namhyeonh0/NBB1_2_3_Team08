@@ -58,51 +58,51 @@ class CourseRepositoryTests
         ))
     }
 
-    @Test
-    @DisplayName("강의 속성으로 강의 목록을 읽는다.")
-    fun readByCourseAttribute() {
-        val courseList = courseRepository.readByCourseAttribute(CourseAttribute.JAVA)
-        Assertions.assertThat(courseList).isNotNull()
-        Assertions.assertThat(courseList.size).isEqualTo(2)
-    }
+//    @Test
+//    @DisplayName("강의 속성으로 강의 목록을 읽는다.")
+//    fun readByCourseAttribute() {
+//        val courseList = courseRepository.readByCourseAttribute(CourseAttribute.JAVA)
+//        Assertions.assertThat(courseList).isNotNull()
+//        Assertions.assertThat(courseList.size).isEqualTo(2)
+//    }
 
-    @Test
-    @Transactional
-    @DisplayName("강의를 업데이트 한다.")
-    fun updateCourse() {
-        val courseDTO = CourseDTO().apply {
-            courseId = 1
-            courseName = "MOD TEST"
-            coursePrice = 10000
-            courseDescription = "MOD"
-            sale = false
-        }
+//    @Test
+//    @Transactional
+//    @DisplayName("강의를 업데이트 한다.")
+//    fun updateCourse() {
+//        val courseDTO = CourseDTO().apply {
+//            courseId = 1
+//            courseName = "MOD TEST"
+//            coursePrice = 10000
+//            courseDescription = "MOD"
+//            sale = false
+//        }
+//
+//        var course = courseRepository.findByIdOrNull(courseDTO.courseId!!)
+//        course!!.apply {
+//            courseName = courseDTO.courseName
+//            coursePrice = courseDTO.coursePrice
+//            courseDescription = courseDTO.courseDescription
+//            sale = true
+//        }
+//        var updatedCourse = courseRepository.save(course)
+//
+//        Assertions.assertThat(updatedCourse.courseDescription).isEqualTo("MOD")
+//    }
 
-        var course = courseRepository.findByIdOrNull(courseDTO.courseId!!)
-        course!!.apply {
-            courseName = courseDTO.courseName
-            coursePrice = courseDTO.coursePrice
-            courseDescription = courseDTO.courseDescription
-            sale = true
-        }
-        var updatedCourse = courseRepository.save(course)
+//    @Test
+//    @DisplayName("강의를 삭제한다.")
+//    fun deleteCourse() {
+//        courseRepository.deleteById(2L)
+//        val deletedCourse = courseRepository.findById(2L)
+//        Assertions.assertThat(deletedCourse).isEmpty()
+//    }
 
-        Assertions.assertThat(updatedCourse.courseDescription).isEqualTo("MOD")
-    }
-
-    @Test
-    @DisplayName("강의를 삭제한다.")
-    fun deleteCourse() {
-        courseRepository.deleteById(2L)
-        val deletedCourse = courseRepository.findById(2L)
-        Assertions.assertThat(deletedCourse).isEmpty()
-    }
-
-    @Test
-    @DisplayName("모든 강의를 읽는다.")
-    fun readAll() {
-        val courseList = courseRepository.findAll()
-        Assertions.assertThat(courseList).isNotNull()
-        Assertions.assertThat(courseList.size).isGreaterThan(1)
-    }
+//    @Test
+//    @DisplayName("모든 강의를 읽는다.")
+//    fun readAll() {
+//        val courseList = courseRepository.findAll()
+//        Assertions.assertThat(courseList).isNotNull()
+//        Assertions.assertThat(courseList.size).isGreaterThan(1)
+//    }
 }

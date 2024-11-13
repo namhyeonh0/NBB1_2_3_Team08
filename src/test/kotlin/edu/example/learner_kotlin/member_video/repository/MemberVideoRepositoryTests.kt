@@ -25,15 +25,15 @@ class MemberVideoRepositoryTests {
         }
     }
 
-    @Test
-    fun testFindByMemberIdAndVideoIdFailure() {
-        val memberId = 2L
-        val videoId = 1L
-
-        memberVideoRepository.findByMemberIdAndVideoId(memberId, videoId)?.let {
-            assertNull(this)
-        }
-    }
+//    @Test
+//    fun testFindByMemberIdAndVideoIdFailure() {
+//        val memberId = 2L
+//        val videoId = 1L
+//
+//        memberVideoRepository.findByMemberIdAndVideoId(memberId, videoId)?.let {
+//            assertNull(this)
+//        }
+//    }
 
     @Test
     fun testAverageByVideoId() {

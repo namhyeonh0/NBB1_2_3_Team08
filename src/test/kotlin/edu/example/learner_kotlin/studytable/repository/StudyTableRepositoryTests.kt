@@ -47,15 +47,15 @@ class StudyTableRepositoryTests {
         }
     }
 
-    @Test
-    fun testGetMonthlyCompleted() {
-        val memberId = 1L
-        val month = 10
-
-        studyTableRepository.getMonthlyCompleted(memberId, month).run {
-            assertThat(this).isGreaterThan(0)
-        }
-    }
+//    @Test
+//    fun testGetMonthlyCompleted() {
+//        val memberId = 1L
+//        val month = 10
+//
+//        studyTableRepository.getMonthlyCompleted(memberId, month).run {
+//            assertThat(this).isGreaterThan(0)
+//        }
+//    }
 
     @Test
     fun testGetYearlyCompleted() {

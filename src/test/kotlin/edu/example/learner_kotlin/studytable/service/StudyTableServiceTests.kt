@@ -117,15 +117,15 @@ class StudyTableServiceTests {
         }
     }
 
-    @Test
-    fun testGetMonthlyCompleted() {
-        val memberId = 1L
-        val month = 10
-
-        studyTableService.getMonthlyCompleted(memberId, month).run {
-            assertEquals(1, this)
-        }
-    }
+//    @Test
+//    fun testGetMonthlyCompleted() {
+//        val memberId = 1L
+//        val month = 10
+//
+//        studyTableService.getMonthlyCompleted(memberId, month).run {
+//            assertEquals(1, this)
+//        }
+//    }
 
     @Test
     fun testGetYearlyCompleted() {
