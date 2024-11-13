@@ -15,6 +15,11 @@ jobs:
       # clone
       - uses: actions/checkout@v3
 
+      - name: Verify Directory Structure
+        run: |
+          pwd
+          ls -al
+
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
@@ -22,6 +27,7 @@ jobs:
 
       - name: Install and Build React App
         run: |
+          ls -al DevCourse_Project_3
           cd DevCourse_Project_3/learner_react
           npm install
           npm run build
