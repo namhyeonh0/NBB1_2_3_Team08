@@ -26,7 +26,7 @@ const SignUp = () => {
         e.preventDefault();
         setErrorMessage("");
         try {
-            const response = await fetch("http://localhost:8080/join/register", {
+            const response = await fetch("http://52.79.149.176//join/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

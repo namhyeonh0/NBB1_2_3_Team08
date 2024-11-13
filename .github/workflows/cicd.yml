@@ -15,6 +15,22 @@ jobs:
       # clone
       - uses: actions/checkout@v3
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install and Build React App
+        run: |
+          cd DevCourse_Project_3/learner_react
+          npm install
+          npm run build
+
+      - name: Move React Build to Spring Boot Static Folder
+        run: |
+          mkdir -p DevCourse_Project_3/src/main/resources/static
+          cp -r DevCourse_Project_3/learner_react/build/* DevCourse_Project_3/src/main/resources/static/
+
       # install jdk
       - uses: actions/setup-java@v3
         with:
