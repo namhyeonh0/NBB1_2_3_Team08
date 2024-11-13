@@ -69,3 +69,12 @@ allOpen {
 tasks.withType<Test> {
     useJUnitPlatform()
 }
+
+tasks.apply {
+    bootJar {
+        enabled = true
+    }
+    jar {
+        enabled = false
+    }
+}
